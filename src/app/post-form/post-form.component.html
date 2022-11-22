@@ -1,5 +1,15 @@
 <div>
-  <input type="text" class="form-control" placeholder="Input title...">
-  <input type="text" class="form-control" placeholder="Input text...">
-  <button class="btn"> Add post </button>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Input title..."
+    [(ngModel)]="title"
+  >
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Input text..."
+    [(ngModel)]="text"
+  >
+  <button class="btn" (click)="addPost()" > Add post</button>
 </div>
