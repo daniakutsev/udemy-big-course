@@ -1,9 +1,22 @@
 <h1>Hello my app</h1>
 
-<button (click)="toggle=!toggle">Toggle</button>
-<button (click)="toggle='def check'">def check</button>
-<div [ngSwitch]="toggle">
-  <p class="red" *ngSwitchCase="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, tempora.</p>
-  <p class="blue" *ngSwitchCase="false">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, tempora.</p>
-  <p *ngSwitchDefault>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, tempora.</p>
-</div>
+<ul>
+  <li *ngFor="let n of arr;let i=index">{{i }},{{n}}</li>
+</ul>
+
+<hr>
+
+<ul>
+  <li *ngFor="let post of objs ">
+    <p><strong>{{post.name}}</strong></p>
+    <p>{{post.title}}</p>
+    <ul *ngFor="let comm of post.comments">
+      <li>
+        <h2>
+          {{comm.name}}
+        </h2>
+        <p>{{comm.text}}</p>
+      </li>
+    </ul>
+  </li>
+</ul>
