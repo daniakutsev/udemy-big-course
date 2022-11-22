@@ -1,22 +1,8 @@
-<h1>Hello my app</h1>
+<div class="container">
+  <h1>Hello my app</h1>
 
-<ul>
-  <li *ngFor="let n of arr;let i=index">{{i }},{{n}}</li>
-</ul>
+  <app-post-form></app-post-form>
+  <hr>
+  <app-post></app-post>
 
-<hr>
-
-<ul>
-  <li *ngFor="let post of objs ">
-    <p><strong>{{post.name}}</strong></p>
-    <p>{{post.title}}</p>
-    <ul *ngFor="let comm of post.comments">
-      <li>
-        <h2>
-          {{comm.name}}
-        </h2>
-        <p>{{comm.text}}</p>
-      </li>
-    </ul>
-  </li>
-</ul>
+</div>
