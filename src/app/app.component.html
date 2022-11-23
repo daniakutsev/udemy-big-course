@@ -1,21 +1,5 @@
 <div class="container">
-  <h1>Hello my app</h1>
+  <h1>Angular directives</h1>
 
-  <h2>subheader</h2>
-
-  <app-post-form
-    (onAdd)="updatePosts($event)"
-  ></app-post-form>
-  <hr>
-  <app-post
-    *ngFor="let p of posts"
-    [post]=p
-    (onRemove)="removePost($event)"
-  >
-    <div #info>
-      <small *ngIf="p.text.length>10;else short">Big post</small>
-      <ng-template #short><small>Small post</small></ng-template>
-    </div>
-  </app-post>
-
+  <p appStyle>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, praesentium.</p>
 </div>
