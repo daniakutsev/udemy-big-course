@@ -1,9 +1,13 @@
 <div class="container">
   <h1>Angular directives</h1>
 
-  <p appStyle='red' [dStyles]="{fontWeight:'bold',border:'1px solid blue',borderRadius:'15px'}">Lorem ipsum dolor sit
-    amet, consectetur adipisicing elit. Debitis, praesentium.</p>
+  <button class="btn" (click)="isVisible=!isVisible">Toggle</button>
 
-  <p appStyle='blue' [dStyles]="{fontWeight:'normal',border:'2px solid red',borderRadius:'5px'}">Lorem ipsum dolor sit
-    amet, consectetur adipisicing elit. Debitis, praesentium.</p>
+ <ng-template [appIfNot]="!isVisible">
+   <div>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, voluptatibus.</p>
+   </div>
+ </ng-template>
+
+
 </div>
