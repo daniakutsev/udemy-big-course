@@ -9,4 +9,6 @@ export class AppComponent {
 
   e: number = Math.E
 
+  str: string = 'Hello World'
+
 }
