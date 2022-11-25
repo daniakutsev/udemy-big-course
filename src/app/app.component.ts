@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Observable} from "rxjs";
+import {AppCounterService} from "./services/appCounter.service";
 
 
 @Component({
@@ -8,16 +8,6 @@ import {Observable} from "rxjs";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  p: Promise<string> = new Promise<string>(resolve => {
-    setTimeout(() => {
-      resolve('Promise resolved')
-    }, 4000)
-  })
-
-  date: Observable<Date> = new Observable(obs => {
-    setInterval(() => {
-      obs.next(new Date())
-    }, 1000)
-  })
+  constructor(public appCounterService: AppCounterService) {
+  }
 }
