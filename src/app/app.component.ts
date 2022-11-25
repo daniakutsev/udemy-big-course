@@ -21,4 +21,12 @@ export class AppComponent {
     {title: 'Javascript', text: 'Best language in the world'}
   ]
 
+  addPost() {
+    this.posts.unshift({
+        title: 'Danylo',
+        text: 'Kutsev'
+      }
+    )
+  }
+
 }
