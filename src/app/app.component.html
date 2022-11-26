@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="card" [formGroup]="form">
+  <form class="card" [formGroup]="form" >
     <h1>Angular Forms</h1>
 
     <div class="form-control">
@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <button class="btn" type="submit" (click)="submit()">Отправить</button>
+    <button class="btn" type="submit" [disabled]="form.invalid" (click)="submit()" >Отправить</button>
 
   </form>
 </div>
