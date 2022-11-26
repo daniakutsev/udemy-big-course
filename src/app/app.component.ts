@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup} from "@angular/forms";
 
 
 @Component({
@@ -6,7 +7,16 @@ import {Component} from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  constructor() {
+export class AppComponent implements OnInit {
+
+  // @ts-ignore
+  form: FormGroup
+
+  ngOnInit() {
+    this.form = new FormGroup({})
+  }
+
+  submit() {
+    console.log(this.form)
   }
 }
