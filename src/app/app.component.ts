@@ -25,6 +25,6 @@ export class AppComponent implements OnInit {
 
   submit() {
     const formData = {...this.form.value}
-    console.log(this.form)
+    console.log(formData)
   }
 }
