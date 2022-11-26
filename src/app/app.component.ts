@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {MyValidators} from "./my.validators";
 
 
 @Component({
@@ -13,17 +14,25 @@ export class AppComponent implements OnInit {
   form: FormGroup
 
   ngOnInit() {
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
     this.form = new FormGroup({
       email: new FormControl('', [
-        Validators.email, Validators.required
+        Validators.email,
+        Validators.required,
+        MyValidators.restrictedEmail
       ]),
       password: new FormControl('', [
-        Validators.required, Validators.minLength(5)
+        Validators.required,
+        Validators.minLength(5)
       ]),
-      adress: new FormGroup({
+      address: new FormGroup({
         country: new FormControl('ua'),
         city: new FormControl('')
-      })
+      }),
+
     })
   }
 
@@ -39,11 +48,12 @@ export class AppComponent implements OnInit {
       by: 'Минск'
     }
     // @ts-ignore
-    const cityKey = this.form?.get('adress')?.get('country').value
+    const cityKey = this.form?.get('address')?.get('country').value
     // @ts-ignore
     const city = cityMap[cityKey]
 
-    this.form.patchValue({adress: {city}})
-
+    this.form.patchValue({address: {city}})
   }
+
+
 }

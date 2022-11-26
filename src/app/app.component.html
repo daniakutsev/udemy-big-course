@@ -17,6 +17,10 @@
         <small *ngIf="form.get('email')?.errors?.['email']">
           Введите корректный email
         </small>
+
+        <small *ngIf="form.get('email')?.errors?.['restrictedEmail']">
+          Недопустимое значение
+        </small>
       </div>
     </div>
 
@@ -39,7 +43,7 @@
       </div>
     </div>
 
-    <div class="card" formGroupName="adress">
+    <div class="card" formGroupName="address">
       <h2>Адрес</h2>
 
       <div class="form-control">
@@ -62,8 +66,9 @@
     <div class="card">
       <h2>Ваши навыки</h2>
       <button class="btn" type="button">Добавить умение</button>
-      <div class="form-control">
-        <label></label>
+      <div
+        class="form-control"     >
+        <label>Skill </label>
         <input type="text">
       </div>
     </div>
