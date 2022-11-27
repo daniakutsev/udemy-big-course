@@ -21,6 +21,9 @@
         <small *ngIf="form.get('email')?.errors?.['restrictedEmail']">
           Недопустимое значение
         </small>
+        <small *ngIf="form.get('email')?.errors?.['uniqEmail']">
+          Email {{form.get('email')?.value}} занят
+        </small>
       </div>
     </div>
 

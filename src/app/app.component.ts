@@ -18,12 +18,15 @@ export class AppComponent implements OnInit {
     // @ts-ignore
     // @ts-ignore
     // @ts-ignore
+    // @ts-ignore
     this.form = new FormGroup({
+      // @ts-ignore
       email: new FormControl('', [
-        Validators.email,
-        Validators.required,
-        MyValidators.restrictedEmail
-      ]),
+          Validators.email,
+          Validators.required,
+          MyValidators.restrictedEmail
+        ], [MyValidators.uniqEmail]
+      ),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(5)
