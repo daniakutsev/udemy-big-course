@@ -1,12 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {delay} from "rxjs";
-
-export interface Todo {
-  completed: boolean,
-  title: string,
-  id?: number
-}
+import {Todo, TodosService} from "./todos.service";
 
 @Component({
   selector: 'app-root',
@@ -16,14 +9,16 @@ export interface Todo {
 export class AppComponent implements OnInit {
 
   todos: Todo[] = []
+
   todoTitle: string = ''
   loading = false
 
-  constructor(private http: HttpClient) {
+  constructor(private todosService: TodosService) {
   }
 
-  getTodoByLimit(): void {
-    this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
+  // @ts-ignore
+  getTodoByLimit(){
+    this.todosService.getTodoByLimit()
       .subscribe(response => {
         this.todos = response
       })
@@ -31,20 +26,13 @@ export class AppComponent implements OnInit {
 
   getAllTodo(): void {
     this.loading = true
-    this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos')
-      .pipe(delay(1500))
+    this.todosService.getAllTodo()
       .subscribe(response => {
         this.todos = response
         this.loading = false
       })
   }
 
-  getTodoById(): void {
-    this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos/201')
-      .subscribe(response => {
-        this.todos = response
-      })
-  }
 
   ngOnInit(): void {
     this.getTodoByLimit()
@@ -56,12 +44,10 @@ export class AppComponent implements OnInit {
       return
     }
 
-    const newTodo: Todo = {
+    this.todosService.addTodo({
       title: this.todoTitle,
       completed: false
-    }
-
-    this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', newTodo)
+    })
       .subscribe(response => {
         console.log(response)
         this.todos.push(response)
@@ -71,7 +57,7 @@ export class AppComponent implements OnInit {
   }
 
   removeTodo(id?: number) {
-    this.http.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+    this.todosService.removeTodo(id)
       .subscribe(response => {
         console.log(response)
         // @ts-ignore
