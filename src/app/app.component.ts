@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   }
 
   // @ts-ignore
-  getTodoByLimit(){
+  getTodoByLimit() {
     this.todosService.getTodoByLimit()
       .subscribe(response => {
         this.todos = response
@@ -62,6 +62,14 @@ export class AppComponent implements OnInit {
         console.log(response)
         // @ts-ignore
         this.todos = this.todos.filter(t => t.id !== id)
+      })
+  }
+
+  completeTodo(id: number) {
+    this.todosService.completeTodo(id)
+      .subscribe(todo => {
+        // @ts-ignore
+        this.todos.find(t => t.id === todo.id).completed=true
       })
   }
 }
