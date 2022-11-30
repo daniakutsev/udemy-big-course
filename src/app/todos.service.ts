@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {delay, Observable} from "rxjs";
 
 export interface Todo {
@@ -26,7 +26,16 @@ export class TodosService {
   }
 
   getTodoByLimit(): Observable<Todo[]> {
-    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
+
+    let params = new HttpParams()
+    // @ts-ignore
+    params = params.append('_limit', '4')
+    params = params.append('custom', 'any')
+
+    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos', {
+      // params: new HttpParams().set('_limit', '3')
+      params
+    })
   }
 
   getAllTodo(): Observable<Todo[]> {
