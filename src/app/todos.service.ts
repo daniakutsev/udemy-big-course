@@ -23,7 +23,7 @@ export class TodosService {
 
   getTodoByLimit(): Observable<Todo[]> {
     // @ts-ignore
-    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
+    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos9?_limit=2')
   }
 
   getAllTodo(): Observable<Todo[]> {

@@ -10,19 +10,26 @@
   </div>
 
   <hr>
-  <div *ngIf="todos.length > 0; else emptyArray">
-    <div *ngIf="!loading; else loadingBlock">
-      <div class="card" *ngFor="let todo of todos">
-        <p>
-          <span [ngClass]="todo.completed === true ? 'completed' : ''">{{this.todo.title}}</span>
-          <span>
+
+  <p *ngIf="error; else TodoBlock"
+     class="error">{{error}}
+  </p>
+
+  <ng-template #TodoBlock>
+    <div *ngIf="todos.length > 0 ; else emptyArray">
+      <div *ngIf="!loading; else loadingBlock">
+        <div class="card" *ngFor="let todo of todos">
+          <p>
+            <span [ngClass]="todo.completed === true ? 'completed' : ''">{{this.todo.title}}</span>
+            <span>
         <button class="btn btn-danger" (click)="removeTodo(todo.id)">Удалить</button>
         <button class="btn" [disabled]="todo.completed" (click)="completeTodo(todo.id!)">Завершить</button>
       </span>
-        </p>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  </ng-template>
 
   <ng-template #emptyArray>
     <p style="color:red">Your array is empty</p>

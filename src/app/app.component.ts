@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   todoTitle: string = ''
   loading = false
 
+  error:string=''
+
   constructor(private todosService: TodosService) {
   }
 
@@ -21,6 +23,9 @@ export class AppComponent implements OnInit {
     this.todosService.getTodoByLimit()
       .subscribe(response => {
         this.todos = response
+      },error => {
+        console.log(error.message)
+        this.error=error.message
       })
   }
 
