@@ -1,44 +1,22 @@
+<nav class="navbar">
+  <h1>
+    <a href="#">Angular Routing</a>
+  </h1>
+  <ul>
+    <li class="active">
+      <a href="#">Home</a>
+    </li>
+    <li><a href="#">Posts</a></li>
+    <li><a href="#">About</a></li>
+    <li><button class="btn">Login</button></li>
+    <li><button class="btn">Logout</button></li>
+  </ul>
+</nav>
+
 <div class="container">
-  <h1>Angular HttpClient</h1>
-
   <div class="card">
-    <div class="form-control">
-      <input type="text" placeholder="Название" [(ngModel)]="todoTitle">
-    </div>
-    <button class="btn" (click)="addTodo()">Добавить</button>
-    <button class="btn" (click)="getAllTodo()">Загрузить</button>
+    <app-home></app-home>
   </div>
-
-  <hr>
-
-  <p *ngIf="error; else TodoBlock"
-     class="error">{{error}}
-  </p>
-
-  <ng-template #TodoBlock>
-    <div *ngIf="todos.length > 0 ; else emptyArray">
-      <div *ngIf="!loading; else loadingBlock">
-        <div class="card" *ngFor="let todo of todos">
-          <p>
-            <span [ngClass]="todo.completed === true ? 'completed' : ''">{{this.todo.title}}</span>
-            <span>
-        <button class="btn btn-danger" (click)="removeTodo(todo.id)">Удалить</button>
-        <button class="btn" [disabled]="todo.completed" (click)="completeTodo(todo.id!)">Завершить</button>
-      </span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </ng-template>
-
-  <ng-template #emptyArray>
-    <p style="color:red">Your array is empty</p>
-  </ng-template>
-
-  <ng-template #loadingBlock>
-    <p>Loading...</p>
-  </ng-template>
-
 </div>
 
 
