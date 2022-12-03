@@ -10,6 +10,7 @@ import {PostComponent} from './post/post.component'
 import {AboutExtraComponent} from './about-extra/about-extra.component'
 import {RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
+import { ErrrorPageComponent } from './errror-page/errror-page.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {AppRoutingModule} from "./app-routing.module";
     PostsComponent,
     PostComponent,
     AboutExtraComponent,
+    ErrrorPageComponent,
 
   ],
   imports: [
