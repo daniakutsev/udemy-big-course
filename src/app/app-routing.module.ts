@@ -8,8 +8,11 @@ import {PostsComponent} from "./posts/posts.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'about/extra', component: AboutExtraComponent},
+  {
+    path: 'about', component: AboutComponent, children: [
+      {path: 'extra', component: AboutExtraComponent}
+    ]
+  },
   {path: 'posts/:id', component: PostComponent},
   {path: 'posts', component: PostsComponent}
 ]
