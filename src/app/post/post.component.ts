@@ -13,21 +13,23 @@ export class PostComponent implements OnInit {
   post: Post
 
   constructor(private router: Router,
-              private postsService: PostsService,
               private route: ActivatedRoute
   ) {
-
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      // @ts-ignore
-      this.post = this.postsService.getById(+params.id)
+
+    this.route.data.subscribe(data => {
+      this.post = data['post']
     })
+
+    // this.route.params.subscribe((params: Params) => {
+    //   // @ts-ignore
+    //   this.post = this.postsService.getById(+params.id)
   }
 
 
   loadPost() {
-    this.router.navigate(['posts',44])
+    this.router.navigate(['posts', 44])
   }
 }
