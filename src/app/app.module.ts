@@ -5,24 +5,19 @@ import {AppComponent} from './app.component'
 import {FormsModule} from '@angular/forms'
 import {HomePageComponent} from './home-page/home-page.component'
 import {AppRoutingModule} from './app-routing.module'
-import {AboutPageComponent} from './about-page/about-page.component'
-import {AboutExtraPageComponent} from './about-page/about-extra-page/about-extra-page.component'
-import {ColorDirective} from './shared/color.directive'
-import {PageNamePipe} from './shared/page-name.pipe'
-
+import {SharedModule} from "./shared/shared.module";
+import {AboutPageModule} from "./about-page/about-page.module";
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    AboutPageComponent,
-    AboutExtraPageComponent,
-    ColorDirective,
-    PageNamePipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    SharedModule,
+    AboutPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
