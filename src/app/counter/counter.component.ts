@@ -1,20 +1,20 @@
-import {Component} from "@angular/core";
+import {Component, EventEmitter, Output} from "@angular/core";
 
 @Component({
   selector: 'app-counter',
   template: `Counter: {{counter}}`
 })
-
 export class CounterComponent {
+  counter = 0
 
-  counter: number = 0
+  @Output() counterEmitter = new EventEmitter<number>()
 
   increment() {
-    return this.counter++
+    this.counter++
+    this.counterEmitter.emit(this.counter)
   }
 
   decrement() {
-    return this.counter--
+    this.counter--
   }
-
 }
