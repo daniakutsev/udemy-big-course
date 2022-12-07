@@ -1,6 +1,5 @@
 import {compute} from "./compute";
 
-export {compute} from './compute'
 
 describe('compute', () => {
   it('should return 0 if negative x', () => {
