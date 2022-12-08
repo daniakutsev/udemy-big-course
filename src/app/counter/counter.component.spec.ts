@@ -33,4 +33,21 @@ describe('CounterComponent', () => {
 
     expect(el.textContent).toContain(num.toString())
   })
+
+  it('should add green class', () => {
+    component.counter = 6
+    fixture.detectChanges()
+
+    let de = fixture.debugElement.query(By.css('.counter'))
+    let el: HTMLElement = de.nativeElement
+
+    expect(el.classList.contains('green')).toBeTruthy()
+  });
+
+  it('should increment button was clicked', () => {
+    let btn = fixture.debugElement.query(By.css('#increment'))
+    btn.triggerEventHandler('click', null)
+
+    expect(component.counter).toBe(1)
+  });
 })
