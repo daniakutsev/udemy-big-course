@@ -7,7 +7,8 @@ import {PostsService} from './posts.service';
 })
 export class PostsComponent implements OnInit {
   posts = []
-  message: string=''
+  // @ts-ignore
+  message: string
 
   constructor(private service: PostsService) {
   }
