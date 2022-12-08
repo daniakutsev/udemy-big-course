@@ -29,7 +29,7 @@ describe('CounterComponent', () => {
     fixture.detectChanges()
 
     let de = fixture.debugElement.query(By.css('.counter'))
-    let el = fixture.nativeElement
+    let el = de.nativeElement
 
     expect(el.textContent).toContain(num.toString())
   })
