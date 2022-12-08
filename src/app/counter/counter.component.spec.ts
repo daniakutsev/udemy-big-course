@@ -50,4 +50,6 @@ describe('CounterComponent', () => {
 
     expect(component.counter).toBe(1)
   });
+
+
 })
