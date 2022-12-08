@@ -1,7 +1,6 @@
 import {PostsComponent} from "./posts.component";
 import {PostsService} from "./posts.service";
-import * as http from "http";
-import {EMPTY, of} from "rxjs";
+import {EMPTY, of, throwError} from "rxjs";
 
 describe('PostsComponent', () => {
   let service: PostsService
@@ -31,7 +30,23 @@ describe('PostsComponent', () => {
     component.ngOnInit()
     expect(component.posts.length).toBe(posts.length)
   })
+  it('should add a new post', () => {
+    const post = {title: 'test'}
+    const spy = spyOn(service, 'create').and.returnValue(of(post))
 
+    component.add(post.title)
+
+    expect(spy).toHaveBeenCalled()
+    expect(component.posts.length).toBe(1)
+  })
+  it('should been have a error message', () => {
+    const message = 'Error message'
+    spyOn(service, 'create').and.returnValue(throwError(message))
+
+    component.add('title')
+
+    expect(component.message).toBe(message)
+  });
 })
 
 
