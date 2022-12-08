@@ -1,5 +1,6 @@
 import {CounterComponent} from "./counter.component";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {By} from "@angular/platform-browser";
 
 describe('CounterComponent', () => {
 
@@ -17,7 +18,19 @@ describe('CounterComponent', () => {
 
 
   })
-  it('should be created',  ()=> {
+  it('should be created', () => {
     expect(component).toBeDefined()
   });
+
+  it('should render counter property', () => {
+    let num = 42
+    component.counter = num
+
+    fixture.detectChanges()
+
+    let de = fixture.debugElement.query(By.css('.counter'))
+    let el = fixture.nativeElement
+
+    expect(el.textContent).toContain(num.toString())
+  })
 })

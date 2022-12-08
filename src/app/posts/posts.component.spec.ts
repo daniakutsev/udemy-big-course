@@ -11,7 +11,7 @@ describe('PostsComponent', () => {
     component = new PostsComponent(service)
   })
   it('should ', function () {
-    
+
   });
 
 })
