@@ -3,7 +3,8 @@ import {RoutingComponent} from './routing.component';
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {Observable, Subject} from "rxjs";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ActivatedRoute, Params, Router, RouterOutlet} from "@angular/router";
+import {By} from "@angular/platform-browser";
 
 class RouterStub {
   navigate(path: string[]) {
@@ -62,4 +63,9 @@ describe('RoutingComponent', () => {
     route.push({id: '0'})
     expect(spy).toHaveBeenCalledWith(['/404'])
   });
+
+  it('should have a router-outlet directive', () => {
+    let de=fixture.debugElement.query(By.directive(RouterOutlet))
+    expect(de).not.toBeNull()
+  })
 });
