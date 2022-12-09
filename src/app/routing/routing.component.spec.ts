@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {RoutingComponent} from './routing.component';
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 
 class RouterStub {
@@ -11,8 +11,15 @@ class RouterStub {
 }
 
 class ActivatedRouterStub {
-  // @ts-ignore
-  params: Observable<Params>
+  private subject = new Subject()
+
+  push(params: Params) {
+    this.subject.next(params)
+  }
+
+  get params() {
+    return this.subject.asObservable()
+  }
 }
 
 describe('RoutingComponent', () => {
@@ -31,6 +38,7 @@ describe('RoutingComponent', () => {
 
     fixture = TestBed.createComponent(RoutingComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges()
   });
 
   it('should be defined', () => {
@@ -44,5 +52,14 @@ describe('RoutingComponent', () => {
     component.goBack()
     expect(spy).toHaveBeenCalledWith(['/posts'])
 
+  });
+
+  it('should navigated to /404 if id = 0 ', () => {
+    let router = TestBed.get(Router)
+    let route: ActivatedRouterStub = TestBed.get(ActivatedRoute)
+    let spy = spyOn(router, 'navigate')
+
+    route.push({id: '0'})
+    expect(spy).toHaveBeenCalledWith(['/404'])
   });
 });
