@@ -1,6 +1,6 @@
 import {PostsComponent} from "./posts.component";
 import {PostsService} from "./posts.service";
-import {ComponentFixture, TestBed, async, fakeAsync, tick} from "@angular/core/testing";
+import {ComponentFixture, TestBed, fakeAsync, tick} from "@angular/core/testing";
 import {HttpClientModule} from "@angular/common/http";
 import {of} from "rxjs";
 
