@@ -25,9 +25,10 @@ describe('NavbarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should have link to posts page', () => {
+  it('should have link to posts page', () => {
     let debugElements = fixture.debugElement.queryAll(By.directive(RouterLinkWithHref))
-    let index = debugElements.findIndex(e => e.properties['href'] === '/posts')
-    expect(index).toBe(0)
+    let index = debugElements.findIndex(e => e.attributes['href'] === '/posts')
+
+    expect(index).toBeGreaterThan(-1)
   })
 });
