@@ -1,32 +1,19 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {CounterComponent} from "./counter/counter.component";
-import {FormsModule} from "@angular/forms";
-import {PostsComponent} from "./posts/posts.component";
-import { RoutingComponent } from './routing/routing.component';
-import {RouterModule} from "@angular/router";
-import { NavbarComponent } from './navbar/navbar.component';
-import { ColorDirective } from './directives/color.directive';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CounterComponent,
-    PostsComponent,
-    RoutingComponent,
-    NavbarComponent,
-    ColorDirective
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    RouterModule.forRoot([])
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas:[NO_ERRORS_SCHEMA]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
