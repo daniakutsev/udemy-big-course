@@ -12,7 +12,22 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
         background: 'red',
         transform: 'scale(1.2)'
       })),
-      transition('start<=>end', animate(500))
+      state('special', style({
+        background: 'orange',
+        transform: 'scale(0.5)',
+        borderRadius: '50%'
+      })),
+      transition('start<=>end', animate(500)),
+      transition('special<=> *',
+        [
+          style({background: 'purple'}),
+          animate(1000,
+            style({
+              background: 'pink'
+            })
+          ),
+          animate(1000)
+        ])
     ])
   ]
 })
