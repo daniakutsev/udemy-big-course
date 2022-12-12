@@ -1,9 +1,11 @@
 <button class="btn" (click)="animate()">Animate</button>
 <button class="btn" (click)="boxState='special'">Special animate</button>
+<button class="btn" (click)="visible=!visible">Visible toggle</button>
 
 <div class="wrap">
   <div
     class="box"
+    *ngIf="visible"
     [@box]="boxState"
   >
     <h4>{{boxState}}</h4>
