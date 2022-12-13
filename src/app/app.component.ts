@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {animate, group, sequence, state, style, transition, trigger} from "@angular/animations";
+import {Component} from '@angular/core';
+import {animate, group, query, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-root',
@@ -7,7 +7,7 @@ import {animate, group, sequence, state, style, transition, trigger} from "@angu
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('box', [
-      state('start', style({ background: 'blue' })),
+      state('start', style({background: 'blue'})),
       state('end', style({
         background: 'red',
         transform: 'scale(1.2)'
@@ -20,15 +20,19 @@ import {animate, group, sequence, state, style, transition, trigger} from "@angu
       transition('start => end', animate(450)),
       transition('end => start', animate('800ms ease-in-out')),
       transition('special <=> *', [
-        style({ background: 'green' }),
-        animate('1s', style({
-          background: 'pink'
-        })),
-        animate(750)
+        group([
+          query('h4', animate(1500, style({
+            fontSize: '.5rem'
+          }))),
+          style({background: 'green'}),
+          animate('1s', style({
+            background: 'pink'
+          })),
+          animate(750)])
       ]),
       // void => *
       transition(':enter', [
-        style({ opacity: 0 }),
+        style({opacity: 0}),
         animate('850ms ease-out')
       ]),
       // * => void
